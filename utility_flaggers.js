@@ -1,22 +1,24 @@
 (async function() {
     let aboutAction
+
     const id = "utility_flaggers"
     const name = "Utility Flaggers"
-    const icon = "extension"
+    const icon = "lightbulb"
     const author = "SirJain"
     
+    // Used in about dialog
     const links = {
-        website: "https://google.com/",
-        discord: "https://discord.com/"
+        twitter: "https://twitter.com/SirJain2",
+        discord: "https://discord.gg/wM4CKTbFVN"
     }
     
     Plugin.register(id, {
         title: name,
         icon,
         author,
-        description: "placeholder",
-        about: "placeholder",
-        tags: ["placeholder"],
+        description: "Flashes cubes based on template conditions.",
+        about: "To do",
+        tags: ["Flagger", "Utility"],
         version: "1.0.0",
         min_version: "4.2.0",
         variant: "both",
@@ -91,12 +93,12 @@
                     <h1 style="margin-top:-10px">${name}</h1>
                     <p>placeholder</p>
                     <div class="socials">
-                    <a href="${links["website"]}" class="open-in-browser">
-                        <i class="icon material-icons" style="color:#33E38E">language</i>
-                        <label>By ${author}</label>
+                    <a href="${links["twitter"]}" class="open-in-browser">
+                        <i class="fa-brands fa-twitter" style="color:#1DA1F2"></i>
+                        <label>Author's Twitter</label>
                     </a>
                     <a href="${links["discord"]}" class="open-in-browser">
-                        <i class="icon fab fa-discord" style="color:#727FFF"></i>
+                        <i class="fa-brands fa-discord" style="color:#5865F2"></i>
                         <label>Discord Server</label>
                     </a>
                     </div>
