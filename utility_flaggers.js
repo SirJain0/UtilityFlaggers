@@ -22,6 +22,7 @@
         version: "1.0.0",
         min_version: "4.2.0",
         variant: "both",
+
         oninstall: () => showAbout(true),
 
         onload() {
@@ -37,6 +38,7 @@
     // Add the about dialog
     function addAbout() {
         let about = MenuBar.menus.help.structure.find(e => e.id === "about_plugins")
+
         if (!about) {
             about = new Action("about_plugins", {
                 name: "About Plugins...",
@@ -45,11 +47,13 @@
             })
             MenuBar.addAction(about, "help")
         }
+
         aboutAction = new Action(`about_${id}`, {
             name: `About ${name}...`,
             icon,
             click: () => showAbout()
         })
+
         about.children.push(aboutAction)
     }
 
@@ -59,6 +63,7 @@
             title: name,
             width: 780,
             buttons: [],
+            
             lines: [`
                 <style>
                     dialog#about .dialog_title {
