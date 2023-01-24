@@ -96,6 +96,8 @@
             aboutAction.delete()
             MenuBar.removeAction(`help.about_plugins.about_${id}`)
             MenuBar.removeAction("tools.flaggers_action")
+
+            Blockbench.showQuickMessage("Uninstalled Utility Flaggers", 2000)
         }
     })
 
