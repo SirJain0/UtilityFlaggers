@@ -5,6 +5,11 @@
     const name = "Utility Flaggers"
     const icon = "lightbulb"
     const author = "SirJain"
+
+    let boxuvConditions, meshConditions
+    let invertedCubeCondition, smallCubeCondition, decimalCubeCondition
+    let sixMeshCondition, allMeshCondition
+    let flaggersParent
     
     // Used in about dialog
     const links = {
@@ -27,11 +32,70 @@
 
         onload() {
             addAbout()
+
+            // Main Parent Action
+            flaggersParent = new Action("flaggers_action", {
+                name: "Utility Flaggers",
+                icon: icon,
+                children: [
+                    "boxuv_conditions", 
+                    "mesh_conditions",
+                    "inverted_cube_conditions"
+                ]
+            })
+
+            // Sub-parent actions
+            boxuvConditions = new Action("boxuv_conditions", {
+                name: "Invalid BoxUV Cubes",
+                icon: icon,
+                children: ["small_cube_condition", "decimal_cube_condition"]
+            })
+
+            meshConditions = new Action("mesh_conditions", {
+                name: "Mesh Flaggers",
+                icon: icon,
+                children: ["all_mesh_condition", "six_mesh_condition"]
+            })
+
+            // Child conditions of sub-parent
+            smallCubeCondition = new Action("small_cube_condition", {
+                name: "Flag Small Cubes",
+                icon: icon,
+                click: () => console.log("Flag Small Cubes action clicked!")
+            })
+
+            decimalCubeCondition = new Action("decimal_cube_condition", {
+                name: "Flag Decimal-Sized Cubes",
+                icon: icon,
+                click: () => console.log("Flag Decimal Cubes action clicked!")
+            })
+
+            allMeshCondition = new Action("all_mesh_condition", {
+                name: "Flag Meshes",
+                icon: icon,
+                click: () => console.log("Flag All Meshes action clicked!")
+            })
+
+            sixMeshCondition = new Action("six_mesh_condition", {
+                name: "Flag 6-Faced Meshes",
+                icon: icon,
+                click: () => console.log("Flag 6-Faced Meshes action clicked!")
+            })
+
+            // Other condition
+            invertedCubeCondition = new Action("inverted_cube_conditions", {
+                name: "Flag Inverted Cubes",
+                icon: icon,
+                click: () => console.log("Flag Inverted Cubes action clicked!")
+            })
+
+            MenuBar.addAction(flaggersParent, "tools")
         },
 
         onunload() {
             aboutAction.delete()
             MenuBar.removeAction(`help.about_plugins.about_${id}`)
+            MenuBar.removeAction("tools.flaggers_action")
         }
     })
 
@@ -63,7 +127,7 @@
             title: name,
             width: 780,
             buttons: [],
-            
+
             lines: [`
                 <style>
                     dialog#about .dialog_title {
