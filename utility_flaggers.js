@@ -1,11 +1,13 @@
 (async function() {
     let aboutAction
 
+    // About dialog variables
     const id = "utility_flaggers"
     const name = "Utility Flaggers"
     const icon = "lightbulb"
     const author = "SirJain"
 
+    // Action variables
     let boxuvConditions, meshConditions
     let invertedCubeCondition, smallCubeCondition, decimalCubeCondition
     let sixMeshCondition, allMeshCondition
@@ -45,6 +47,7 @@
         }
     })
 
+    // Initializes all plugin actions
     function registerActions() {
 
         // Child conditions of sub-parent
