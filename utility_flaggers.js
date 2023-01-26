@@ -67,7 +67,7 @@
         icon,
         author,
         description: "Flashes elements based on template conditions.",
-        about: "To do",
+        about: "This plugin allows you to flash elements that meet certain preset conditions on-screen.\n## How to use\nTo use this plugin, simply go to `Tools -> Utility Flaggers`. Pick a preset option, fill out your preferred settings, and press `Flag`!",
         tags: ["Utility", "BoxUV", "Format: Generic Model"],
         version: "1.0.0",
         min_version: "4.2.0",
