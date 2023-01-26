@@ -5,7 +5,7 @@
     const id = "utility_flaggers"
     const name = "Utility Flaggers"
     const icon = "lightbulb"
-    const author = "SirJain"
+    const author = "SirJain and DerfX"
 
     // Dialog variables
     let invertedDialog, smallCubeDialog, sixFacedMeshDialog, allMeshDialog, decimalCubeDialog
