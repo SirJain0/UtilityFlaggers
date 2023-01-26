@@ -161,21 +161,24 @@
                 color: {
                     type: "color",
                     label: "Color",
-                    value: "#FF3131"
+                    value: "#FF3131",
+                    description: "The color of the flash. It is recommended to use brighter colors to see the flashing better."
                 },
                 divider: "_",
                 amount: {
                     type: "number",
                     min: "1",
                     value: "3",
-                    label: "Flag Amount",
+                    label: "Amount of Flashes",
+                    description: 'The amount of flashes that happen.'
                 },
                 duration: {
                     type: "number",
                     min: "0.1",
                     value: "1.5",
                     step: "0.1",
-                    label: "Duration Per Flag",
+                    label: "Duration Per Flash",
+                    description: 'The duration per flash, in seconds.'
                 }
             },
 
@@ -208,21 +211,24 @@
                 color: {
                     type: "color",
                     label: "Color",
-                    value: "#FF8C31"
+                    value: "#FF8C31",
+                    description: "The color of the flash. It is recommended to use brighter colors to see the flashing better."
                 },
                 divider: "_",
                 amount: {
                     type: "number",
                     min: "1",
                     value: "3",
-                    label: "Flag Amount",
+                    label: "Amount of Flashes",
+                    description: 'The amount of flashes that happen.'
                 },
                 duration: {
                     type: "number",
                     min: "0.1",
                     value: "1.5",
                     step: "0.1",
-                    label: "Duration Per Flag",
+                    label: "Duration Per Flash",
+                    description: 'The duration per flash, in seconds.'
                 }
             },
 
@@ -255,21 +261,24 @@
                 color: {
                     type: "color",
                     label: "Color",
-                    value: "#F1F1F1"
+                    value: "#F1F1F1",
+                    description: "The color of the flash. It is recommended to use brighter colors to see the flashing better."
                 },
                 divider: "_",
                 amount: {
                     type: "number",
                     min: "1",
                     value: "3",
-                    label: "Flag Amount",
+                    label: "Amount of Flashes",
+                    description: 'The amount of flashes that happen.'
                 },
                 duration: {
                     type: "number",
                     min: "0.1",
                     value: "1.5",
                     step: "0.1",
-                    label: "Duration Per Flag",
+                    label: "Duration Per Flash",
+                    description: 'The duration per flash, in seconds.'
                 }
             },
 
@@ -298,21 +307,24 @@
                 color: {
                     type: "color",
                     label: "Color",
-                    value: "#F1F1F1"
+                    value: "#F1F1F1",
+                    description: "The color of the flash. It is recommended to use brighter colors to see the flashing better."
                 },
                 divider: "_",
                 amount: {
                     type: "number",
                     min: "1",
                     value: "3",
-                    label: "Flag Amount",
+                    label: "Amount of Flashes",
+                    description: 'The amount of flashes that happen.'
                 },
                 duration: {
                     type: "number",
                     min: "0.1",
                     value: "1.5",
                     step: "0.1",
-                    label: "Duration Per Flag",
+                    label: "Duration Per Flash",
+                    description: 'The duration per flash, in seconds.'
                 }
             },
 
@@ -341,21 +353,24 @@
                 color: {
                     type: "color",
                     label: "Color",
-                    value: "#F1F1F1"
+                    value: "#F1F1F1",
+                    description: "The color of the flash. It is recommended to use brighter colors to see the flashing better."
                 },
                 divider: "_",
                 amount: {
                     type: "number",
                     min: "1",
                     value: "3",
-                    label: "Flag Amount",
+                    label: "Amount of Flashes",
+                    description: 'The amount of flashes that happen.'
                 },
                 duration: {
                     type: "number",
                     min: "0.1",
                     value: "1.5",
                     step: "0.1",
-                    label: "Duration Per Flag",
+                    label: "Duration Per Flash",
+                    description: 'The duration per flash, in seconds.'
                 }
             },
 
