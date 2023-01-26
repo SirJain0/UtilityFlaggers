@@ -1,9 +1,5 @@
 (async function() {
-    let aboutAction, cubes
-
-    let redMaterial = new THREE.MeshBasicMaterial({color: 0xFF3131})
-    let orangeMaterial = new THREE.MeshBasicMaterial({color: 0xFF8C31})
-    let whiteMaterial = new THREE.MeshBasicMaterial({color: 0xF1F1F1})
+    let aboutAction, cubes, material
 
     // Highlighter mechanism
     const highlighter = {
@@ -172,14 +168,18 @@
                 }
             },
 
-            onConfirm() {
+            onConfirm(formData) {
                 cubes = Cube.all.filter(cube => 
                     (cube.size(0) > 0 && cube.size(0) < 1) || 
                     (cube.size(1) > 0 && cube.size(1) < 1) || 
                     (cube.size(2) > 0 && cube.size(2) < 1)
                 )
 
-                highlighter.start(cubes, redMaterial, 5)
+                let hexString = formData.color.toHexString()
+                parsedStr = parseInt(hexString.substring(1), 16)
+                material = new THREE.MeshBasicMaterial({color: parsedStr})
+
+                highlighter.start(cubes, material, 5)
             }
         })
 
@@ -201,14 +201,18 @@
                 }
             },
 
-            onConfirm() {
+            onConfirm(formData) {
                 cubes = Cube.all.filter(cube => (
                     cube.size(0) % 1 !== 0 || 
                     cube.size(1) % 1 !== 0 || 
                     cube.size(2) % 1 !== 0
                 ))
 
-                highlighter.start(cubes, orangeMaterial, 5)
+                let hexString = formData.color.toHexString()
+                parsedStr = parseInt(hexString.substring(1), 16)
+                material = new THREE.MeshBasicMaterial({color: parsedStr})
+
+                highlighter.start(cubes, material, 5)
             }
         })
 
@@ -230,9 +234,14 @@
                 }
             },
 
-            onConfirm() {
+            onConfirm(formData) {
                 cubes = Mesh.all
-                highlighter.start(cubes, whiteMaterial, 5)
+
+                let hexString = formData.color.toHexString()
+                parsedStr = parseInt(hexString.substring(1), 16)
+                material = new THREE.MeshBasicMaterial({color: parsedStr})
+
+                highlighter.start(cubes, material, 5)
             }
         })
 
@@ -254,9 +263,14 @@
                 }
             },
 
-            onConfirm() {
+            onConfirm(formData) {
                 cubes = Mesh.all.filter(e => Object.entries(e.faces).length === 6)
-                highlighter.start(cubes, whiteMaterial, 5)
+
+                let hexString = formData.color.toHexString()
+                parsedStr = parseInt(hexString.substring(1), 16)
+                material = new THREE.MeshBasicMaterial({color: parsedStr})
+
+                highlighter.start(cubes, material, 5)
             }
         })
 
@@ -278,14 +292,18 @@
                 }
             },
 
-            onConfirm() {
+            onConfirm(formData) {
                 cubes = Cube.all.filter(cube => 
                     (cube.size(0) < 0) || 
                     (cube.size(1) < 0) || 
                     (cube.size(2) < 0)
                 )
 
-                highlighter.start(cubes, whiteMaterial, 5)
+                let hexString = formData.color.toHexString()
+                parsedStr = parseInt(hexString.substring(1), 16)
+                material = new THREE.MeshBasicMaterial({color: parsedStr})
+
+                highlighter.start(cubes, material, 5)
             }
         })
     }
@@ -311,7 +329,7 @@
 
         about.children.push(aboutAction)
     }
-
+      
     function showAbout(banner) {
         const infoBox = new Dialog({
             id: "about",
