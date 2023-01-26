@@ -5,7 +5,7 @@
 
     // Highlighter mechanism
     const highlighter = {
-        i: 0,
+        i: 1,
         running: false,
         start: (cubes, material, duration, durationPerFlash) => {
             if (highlighter.running) return
@@ -17,7 +17,7 @@
             };
 
             clearInterval(highlighter.interval)
-            highlighter.i = 0
+            highlighter.i = 1
             highlighter.interval = setInterval(() => highlighter.flash(cubes, material, duration), durationPerFlash)
             highlighter.flash(cubes, material, duration)
         },
@@ -171,9 +171,9 @@
                 },
                 duration: {
                     type: "number",
-                    min: "1",
+                    min: "0.1",
                     value: "1.5",
-                    step: "0.5",
+                    step: "0.1",
                     label: "Duration Per Flag",
                 }
             },
@@ -218,9 +218,9 @@
                 },
                 duration: {
                     type: "number",
-                    min: "1",
+                    min: "0.1",
                     value: "1.5",
-                    step: "0.5",
+                    step: "0.1",
                     label: "Duration Per Flag",
                 }
             },
@@ -236,10 +236,13 @@
                 parsedStr = parseInt(hexString.substring(1), 16)
                 material = new THREE.MeshBasicMaterial({color: parsedStr})
 
+                let numInput = formData.amount
+                duration = 2 * numInput - 1
+
                 let durationInput = formData.duration
                 durationPerFlash = durationInput * 1000
 
-                highlighter.start(cubes, material, durationPerFlash)
+                highlighter.start(cubes, material, duration, durationPerFlash)
             }
         })
 
@@ -262,9 +265,9 @@
                 },
                 duration: {
                     type: "number",
-                    min: "1",
+                    min: "0.1",
                     value: "1.5",
-                    step: "0.5",
+                    step: "0.1",
                     label: "Duration Per Flag",
                 }
             },
@@ -276,10 +279,13 @@
                 parsedStr = parseInt(hexString.substring(1), 16)
                 material = new THREE.MeshBasicMaterial({color: parsedStr})
 
+                let numInput = formData.amount
+                duration = 2 * numInput - 1
+
                 let durationInput = formData.duration
                 durationPerFlash = durationInput * 1000
 
-                highlighter.start(cubes, material, durationPerFlash)
+                highlighter.start(cubes, material, duration, durationPerFlash)
             }
         })
 
@@ -302,9 +308,9 @@
                 },
                 duration: {
                     type: "number",
-                    min: "1",
+                    min: "0.1",
                     value: "1.5",
-                    step: "0.5",
+                    step: "0.1",
                     label: "Duration Per Flag",
                 }
             },
@@ -316,10 +322,13 @@
                 parsedStr = parseInt(hexString.substring(1), 16)
                 material = new THREE.MeshBasicMaterial({color: parsedStr})
 
+                let numInput = formData.amount
+                duration = 2 * numInput - 1
+
                 let durationInput = formData.duration
                 durationPerFlash = durationInput * 1000
 
-                highlighter.start(cubes, material, durationPerFlash)
+                highlighter.start(cubes, material, duration, durationPerFlash)
             }
         })
 
@@ -342,9 +351,9 @@
                 },
                 duration: {
                     type: "number",
-                    min: "1",
+                    min: "0.1",
                     value: "1.5",
-                    step: "0.5",
+                    step: "0.1",
                     label: "Duration Per Flag",
                 }
             },
@@ -360,10 +369,13 @@
                 parsedStr = parseInt(hexString.substring(1), 16)
                 material = new THREE.MeshBasicMaterial({color: parsedStr})
 
+                let numInput = formData.amount
+                duration = 2 * numInput - 1
+
                 let durationInput = formData.duration
                 durationPerFlash = durationInput * 1000
 
-                highlighter.start(cubes, material, durationPerFlash)
+                highlighter.start(cubes, material, duration, durationPerFlash)
             }
         })
     }
