@@ -68,7 +68,7 @@
         author,
         description: "Flashes elements based on template conditions.",
         about: "To do",
-        tags: ["Flagger", "Utility"],
+        tags: ["Utility", "BoxUV", "Format: Generic Model"],
         version: "1.0.0",
         min_version: "4.2.0",
         variant: "both",
