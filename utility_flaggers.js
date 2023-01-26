@@ -80,6 +80,7 @@
             registerDialogs()
             registerActions()
             MenuBar.addAction(flaggersParent, "tools")
+            console.log(Format?.id)
         },
 
         onunload() {
@@ -98,24 +99,28 @@
         smallCubeCondition = new Action("small_cube_condition", {
             name: "Flag Small Cubes",
             icon: "fa-cube",
+            condition: () => Format?.id !== "image",
             click: () => smallCubeDialog.show()
         })
 
         decimalCubeCondition = new Action("decimal_cube_condition", {
             name: "Flag Decimal-Sized Cubes",
             icon: "fa-cube",
+            condition: () => Format?.id !== "image",
             click: () => decimalCubeDialog.show()
         })
 
         allMeshCondition = new Action("all_mesh_condition", {
             name: "Flag Meshes",
             icon: "diamond",
+            condition: () => Format?.id === "free",
             click: () => allMeshDialog.show()
         })
 
         sixMeshCondition = new Action("six_mesh_condition", {
             name: "Flag 6-Faced Meshes",
             icon: "diamond",
+            condition: () => Format?.id === "free",
             click: () => sixFacedMeshDialog.show()
         })
 
@@ -123,6 +128,7 @@
         invertedCubeCondition = new Action("inverted_cube_conditions", {
             name: "Flag Inverted Cubes",
             icon: "invert_colors",
+            condition: () => Format?.id !== "image",
             click: () => invertedDialog.show()
         })
 
@@ -130,12 +136,14 @@
         boxuvConditions = new Action("boxuv_conditions", {
             name: "Invalid BoxUV Cubes",
             icon: "fa-cube",
+            condition: () => Format?.id !== "image",
             children: ["small_cube_condition", "decimal_cube_condition"]
         })
 
         meshConditions = new Action("mesh_conditions", {
             name: "Mesh Flaggers",
             icon: "diamond",
+            condition: () => Format?.id === "free",
             children: ["all_mesh_condition", "six_mesh_condition"]
         })
 
@@ -143,6 +151,7 @@
         flaggersParent = new Action("flaggers_action", {
             name: "Utility Flaggers",
             icon: icon,
+            condition: () => Format?.id !== "image",
             children: [
                 "boxuv_conditions", 
                 "mesh_conditions",
