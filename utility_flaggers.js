@@ -7,6 +7,9 @@
     const icon = "lightbulb"
     const author = "SirJain"
 
+    // Dialog variables
+    let invertedDialog, smallCubeDialog, sixFacedMeshDialog, allMeshDialog, decimalCubeDialog
+
     // Action variables
     let boxuvConditions, meshConditions
     let invertedCubeCondition, smallCubeCondition, decimalCubeCondition
@@ -34,6 +37,7 @@
 
         onload() {
             addAbout()
+            registerDialogs()
             registerActions()
             MenuBar.addAction(flaggersParent, "tools")
         },
@@ -54,32 +58,32 @@
         smallCubeCondition = new Action("small_cube_condition", {
             name: "Flag Small Cubes",
             icon: "fa-cube",
-            click: () => console.log("Flag Small Cubes action clicked!")
+            click: () => smallCubeDialog.show()
         })
 
         decimalCubeCondition = new Action("decimal_cube_condition", {
             name: "Flag Decimal-Sized Cubes",
             icon: "fa-cube",
-            click: () => console.log("Flag Decimal Cubes action clicked!")
+            click: () => decimalCubeDialog.show()
         })
 
         allMeshCondition = new Action("all_mesh_condition", {
             name: "Flag Meshes",
             icon: "diamond",
-            click: () => console.log("Flag All Meshes action clicked!")
+            click: () => allMeshDialog.show()
         })
 
         sixMeshCondition = new Action("six_mesh_condition", {
             name: "Flag 6-Faced Meshes",
             icon: "diamond",
-            click: () => console.log("Flag 6-Faced Meshes action clicked!")
+            click: () => sixFacedMeshDialog.show()
         })
 
         // Other condition
         invertedCubeCondition = new Action("inverted_cube_conditions", {
             name: "Flag Inverted Cubes",
             icon: "invert_colors",
-            click: () => console.log("Flag Inverted Cubes action clicked!")
+            click: () => invertedDialog.show()
         })
 
         // Sub-parent actions
@@ -104,6 +108,124 @@
                 "mesh_conditions",
                 "inverted_cube_conditions"
             ]
+        })
+    }
+
+    // Register the dialogs - dialogs are triggered by clicking an action using .show()
+    function registerDialogs() {
+        smallCubeDialog = new Dialog("small_cube_dialog", {
+            title: "Flag Small Cubes",
+            buttons: ["Flag", "Cancel"],
+
+            form: {
+                color: {
+                    type: "color",
+                    label: "Color",
+                    value: "#FF3131"
+                },
+                amount: {
+                    type: "number",
+                    min: "1",
+                    value: "3",
+                    label: "Flag Amount",
+                }
+            },
+
+            onConfirm() {
+                console.log("Small cube dialog clicked!")
+            }
+        })
+
+        decimalCubeDialog = new Dialog("decimal_cube_dialog", {
+            title: "Flag Decimal-Sized Cubes",
+            buttons: ["Flag", "Cancel"],
+
+            form: {
+                color: {
+                    type: "color",
+                    label: "Color",
+                    value: "#FF8C31"
+                },
+                amount: {
+                    type: "number",
+                    min: "1",
+                    value: "3",
+                    label: "Flag Amount",
+                }
+            },
+
+            onConfirm() {
+                console.log("Decimal cube dialog clicked!")
+            }
+        })
+
+        allMeshDialog = new Dialog("all_mesh_dialog", {
+            title: "Flag Meshes",
+            buttons: ["Flag", "Cancel"],
+
+            form: {
+                color: {
+                    type: "color",
+                    label: "Color",
+                    value: "#F1F1F1"
+                },
+                amount: {
+                    type: "number",
+                    min: "1",
+                    value: "3",
+                    label: "Flag Amount",
+                }
+            },
+
+            onConfirm() {
+                console.log("All-mesh dialog clicked!")
+            }
+        })
+
+        sixFacedMeshDialog = new Dialog("six_faced_mesh_dialog", {
+            title: "Flag 6-Faced Meshes",
+            buttons: ["Flag", "Cancel"],
+
+            form: {
+                color: {
+                    type: "color",
+                    label: "Color",
+                    value: "#F1F1F1"
+                },
+                amount: {
+                    type: "number",
+                    min: "1",
+                    value: "3",
+                    label: "Flag Amount",
+                }
+            },
+
+            onConfirm() {
+                console.log("6-faced mesh dialog clicked!")
+            }
+        })
+
+        invertedDialog = new Dialog("inverted_cube_dialog", {
+            title: "Flag Inverted Cubes",
+            buttons: ["Flag", "Cancel"],
+
+            form: {
+                color: {
+                    type: "color",
+                    label: "Color",
+                    value: "#F1F1F1"
+                },
+                amount: {
+                    type: "number",
+                    min: "1",
+                    value: "3",
+                    label: "Flag Amount",
+                }
+            },
+
+            onConfirm() {
+                console.log("Inverted cube dialog clicked!")
+            }
         })
     }
 
