@@ -1,5 +1,5 @@
 (async function() {
-    let aboutAction, cubes, material
+    let aboutAction, cubes
 
     let redMaterial = new THREE.MeshBasicMaterial({color: 0xFF3131})
     let orangeMaterial = new THREE.MeshBasicMaterial({color: 0xFF8C31})
