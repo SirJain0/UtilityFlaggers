@@ -58,6 +58,7 @@
     // Used in about dialog
     const links = {
         twitter: "https://twitter.com/SirJain2",
+        twitterDerf: "https://twitter.com/Derf31922027",
         discord: "https://discord.gg/wM4CKTbFVN"
     }
     
@@ -65,7 +66,7 @@
         title: name,
         icon,
         author,
-        description: "Flashes cubes based on template conditions.",
+        description: "Flashes elements based on template conditions.",
         about: "To do",
         tags: ["Flagger", "Utility"],
         version: "1.0.0",
@@ -441,16 +442,26 @@
                 ${banner ? `<div id="banner">This window can be reopened at any time from <strong>Help > About Plugins > ${name}</strong></div>` : ""}
                 <div id="content">
                     <h1 style="margin-top:-10px">${name}</h1>
-                    <p>placeholder</p>
+                    <p>Flashes elements based on template conditions.</p>
+					<h4>Worth noting:</h4>
+					<p>- This plugin basically combines the original <b>BoxUV Cube Flagger</b> and <b>Mesh Flagger</b> plugins into one, with adding the functionality of flagging inverted (negative-sized) cubes as well.
+                    <p>- DerfX is mentioned as an author due to his original contributions to the Mesh Flagger plugin.</p>
+					<h4>How to use:</h4>
+					<p>To use this plugin, go to <b>Tools > Utility Flaggers</b>. Choose your template for flagging (hover over question mark to learn more about it). Configure your settings if you wish, and then press <b>Flag</b>!</p>
+					<br>
                     <div class="socials">
-                    <a href="${links["twitter"]}" class="open-in-browser">
-                        <i class="fa-brands fa-twitter" style="color:#1DA1F2"></i>
-                        <label>Author's Twitter</label>
-                    </a>
-                    <a href="${links["discord"]}" class="open-in-browser">
-                        <i class="fa-brands fa-discord" style="color:#5865F2"></i>
-                        <label>Discord Server</label>
-                    </a>
+                        <a href="${links["twitter"]}" class="open-in-browser">
+                            <i class="fa-brands fa-twitter" style="color:#1DA1F2"></i>
+                            <label>SirJain's Twitter</label>
+                        </a>
+                        <a href="${links["twitterDerf"]}" class="open-in-browser">
+                            <i class="fa-brands fa-twitter" style="color:#1DA1F2"></i>
+                            <label>DerfX's Twitter</label>
+                        </a>
+                        <a href="${links["discord"]}" class="open-in-browser">
+                            <i class="fa-brands fa-discord" style="color:#5865F2"></i>
+                            <label>Discord Server</label>
+                        </a>
                     </div>
                 </div>
             `]
