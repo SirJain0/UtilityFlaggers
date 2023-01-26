@@ -5,6 +5,7 @@
     let orangeMaterial = new THREE.MeshBasicMaterial({color: 0xFF8C31})
     let whiteMaterial = new THREE.MeshBasicMaterial({color: 0xF1F1F1})
 
+    // Highlighter mechanism
     const highlighter = {
         i: 0,
         running: false,
