@@ -1,5 +1,45 @@
 (async function() {
-    let aboutAction
+    let aboutAction, cubes, material
+
+    let redMaterial = new THREE.MeshBasicMaterial({color: 0xFF3131})
+    let orangeMaterial = new THREE.MeshBasicMaterial({color: 0xFF8C31})
+    let whiteMaterial = new THREE.MeshBasicMaterial({color: 0xF1F1F1})
+
+    const highlighter = {
+        i: 0,
+        running: false,
+        start: (cubes, material, duration) => {
+            if (highlighter.running) return
+            highlighter.running = true
+            Blockbench.showQuickMessage("Flagging...", 1500)
+
+            for (const cube of cubes) {
+                cube.mesh.material_non_flash = cube.mesh.material
+            };
+
+            clearInterval(highlighter.interval)
+            highlighter.i = 0
+            highlighter.interval = setInterval(() => highlighter.flash(cubes, material, duration), 1500)
+            highlighter.flash(cubes, material, duration)
+        },
+
+        flash: (cubes, material, duration) => {
+            let fc = highlighter.i
+
+            if (fc > duration) {
+                highlighter.running = false
+                clearInterval(highlighter.interval)
+            };
+
+            for (const cube of cubes) {
+                if (cube.mesh) {
+                    cube.mesh.material = (fc % 2) ? material : cube.mesh.material_non_flash
+                }
+            };
+
+            highlighter.i++
+        }
+    }
 
     // About dialog variables
     const id = "utility_flaggers"
@@ -132,7 +172,13 @@
             },
 
             onConfirm() {
-                console.log("Small cube dialog clicked!")
+                cubes = Cube.all.filter(cube => 
+                    (cube.size(0) > 0 && cube.size(0) < 1) || 
+                    (cube.size(1) > 0 && cube.size(1) < 1) || 
+                    (cube.size(2) > 0 && cube.size(2) < 1)
+                )
+
+                highlighter.start(cubes, redMaterial, 5)
             }
         })
 
@@ -155,7 +201,13 @@
             },
 
             onConfirm() {
-                console.log("Decimal cube dialog clicked!")
+                cubes = Cube.all.filter(cube => (
+                    cube.size(0) % 1 !== 0 || 
+                    cube.size(1) % 1 !== 0 || 
+                    cube.size(2) % 1 !== 0
+                ))
+
+                highlighter.start(cubes, orangeMaterial, 5)
             }
         })
 
@@ -178,7 +230,8 @@
             },
 
             onConfirm() {
-                console.log("All-mesh dialog clicked!")
+                cubes = Mesh.all
+                highlighter.start(cubes, whiteMaterial, 5)
             }
         })
 
@@ -201,7 +254,8 @@
             },
 
             onConfirm() {
-                console.log("6-faced mesh dialog clicked!")
+                cubes = Mesh.all.filter(e => Object.entries(e.faces).length === 6)
+                highlighter.start(cubes, whiteMaterial, 5)
             }
         })
 
@@ -224,7 +278,13 @@
             },
 
             onConfirm() {
-                console.log("Inverted cube dialog clicked!")
+                cubes = Cube.all.filter(cube => 
+                    (cube.size(0) < 0) || 
+                    (cube.size(1) < 0) || 
+                    (cube.size(2) < 0)
+                )
+
+                highlighter.start(cubes, whiteMaterial, 5)
             }
         })
     }
