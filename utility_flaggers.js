@@ -1,7 +1,5 @@
-// 2x-1
-
 (async function() {
-    let aboutAction, cubes, material, duration
+    let aboutAction, cubes, material, duration, durationInput, hexString, numInput
 
     // Highlighter mechanism
     const highlighter = {
@@ -198,14 +196,14 @@
                     (cube.size(2) > 0 && cube.size(2) < 1)
                 )
 
-                let hexString = formData.color.toHexString()
+                hexString = formData.color.toHexString()
                 parsedStr = parseInt(hexString.substring(1), 16)
                 material = new THREE.MeshBasicMaterial({color: parsedStr})
 
-                let numInput = formData.amount
+                numInput = formData.amount
                 duration = 2 * numInput - 1
 
-                let durationInput = formData.duration
+                durationInput = formData.duration
                 durationPerFlash = durationInput * 1000
 
                 highlighter.start(cubes, material, duration, durationPerFlash)
@@ -248,14 +246,14 @@
                     cube.size(2) % 1 !== 0
                 ))
 
-                let hexString = formData.color.toHexString()
+                hexString = formData.color.toHexString()
                 parsedStr = parseInt(hexString.substring(1), 16)
                 material = new THREE.MeshBasicMaterial({color: parsedStr})
 
-                let numInput = formData.amount
+                numInput = formData.amount
                 duration = 2 * numInput - 1
 
-                let durationInput = formData.duration
+                durationInput = formData.duration
                 durationPerFlash = durationInput * 1000
 
                 highlighter.start(cubes, material, duration, durationPerFlash)
@@ -294,14 +292,14 @@
             onConfirm(formData) {
                 cubes = Mesh.all
 
-                let hexString = formData.color.toHexString()
+                hexString = formData.color.toHexString()
                 parsedStr = parseInt(hexString.substring(1), 16)
                 material = new THREE.MeshBasicMaterial({color: parsedStr})
 
-                let numInput = formData.amount
+                numInput = formData.amount
                 duration = 2 * numInput - 1
 
-                let durationInput = formData.duration
+                durationInput = formData.duration
                 durationPerFlash = durationInput * 1000
 
                 highlighter.start(cubes, material, duration, durationPerFlash)
@@ -340,14 +338,14 @@
             onConfirm(formData) {
                 cubes = Mesh.all.filter(e => Object.entries(e.faces).length === 6)
 
-                let hexString = formData.color.toHexString()
+                hexString = formData.color.toHexString()
                 parsedStr = parseInt(hexString.substring(1), 16)
                 material = new THREE.MeshBasicMaterial({color: parsedStr})
 
-                let numInput = formData.amount
+                numInput = formData.amount
                 duration = 2 * numInput - 1
 
-                let durationInput = formData.duration
+                durationInput = formData.duration
                 durationPerFlash = durationInput * 1000
 
                 highlighter.start(cubes, material, duration, durationPerFlash)
@@ -390,14 +388,14 @@
                     (cube.size(2) < 0)
                 )
 
-                let hexString = formData.color.toHexString()
+                hexString = formData.color.toHexString()
                 parsedStr = parseInt(hexString.substring(1), 16)
                 material = new THREE.MeshBasicMaterial({color: parsedStr})
 
-                let numInput = formData.amount
+                numInput = formData.amount
                 duration = 2 * numInput - 1
 
-                let durationInput = formData.duration
+                durationInput = formData.duration
                 durationPerFlash = durationInput * 1000
 
                 highlighter.start(cubes, material, duration, durationPerFlash)
