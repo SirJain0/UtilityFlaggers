@@ -464,12 +464,12 @@
                 <div id="content">
                     <h1 style="margin-top:-10px">${name}</h1>
                     <p>Flashes elements based on template conditions.</p>
-					<h4>Worth noting:</h4>
-					<p>- This plugin basically combines the original <b>BoxUV Cube Flagger</b> and <b>Mesh Flagger</b> plugins into one, with adding the functionality of flagging inverted (negative-sized) cubes as well.
+		    <h4>Worth noting:</h4>
+		    <p>- This plugin basically combines the original <b>BoxUV Cube Flagger</b> and <b>Mesh Flagger</b> plugins into one, with adding the functionality of flagging inverted (negative-sized) cubes as well.
                     <p>- DerfX is mentioned as an author due to his original contributions to the Mesh Flagger plugin.</p>
-					<h4>How to use:</h4>
-					<p>To use this plugin, go to <b>Tools > Utility Flaggers</b>. Choose your template for flagging (hover over question mark to learn more about it). Configure your settings if you wish, and then press <b>Flag</b>!</p>
-					<br>
+		    <h4>How to use:</h4>
+		    <p>To use this plugin, go to <b>Tools > Utility Flaggers</b>. Choose your template for flagging (hover over question mark to learn more about it). Configure your settings if you wish, and then press <b>Flag</b>!</p>
+		    <br>
                     <div class="socials">
                         <a href="${links["twitter"]}" class="open-in-browser">
                             <i class="fa-brands fa-twitter" style="color:#1DA1F2"></i>
