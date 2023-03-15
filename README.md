@@ -10,4 +10,4 @@ To use this plugin, go to <b>Tools > Utility Flaggers</b>. Choose your template 
 Please report any bugs or suggestions you may have to make this plugin more enjoyable for everyone.
 <br>
 <br>
-[Plugin link here]
+https://www.blockbench.net/plugins/utility_flaggers
