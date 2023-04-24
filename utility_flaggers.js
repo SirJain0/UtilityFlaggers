@@ -131,7 +131,7 @@
 
         invalidRotationCondition = new Action("invalid_rotation_restriction", {
             name: "Flag Invalid Java Block/Item Rotations",
-            icon: "rotate",
+            icon: "rotate_90_degrees_ccw",
             condition: () => Format?.id !== "image",
             click: () => invalidRotationDialog.show()
         })
@@ -360,7 +360,7 @@
         })
 
         invalidRotationDialog = new Dialog("invalid_rotation_dialog", {
-            title: "Flag Invalid Java Block/Item Rotations",
+
             buttons: ["Flag", "Cancel"],
 
             form: {
