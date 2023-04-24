@@ -2,7 +2,7 @@
 To do:
 - Add inflation flagging?
 - Fix broken filter for rotations
-- Add website to about dialog
+
 */
 
 (async function() {
@@ -64,7 +64,8 @@ To do:
     const links = {
         twitter: "https://twitter.com/SirJain2",
         twitterDerf: "https://twitter.com/Derf31922027",
-        discord: "https://discord.gg/wM4CKTbFVN"
+        discord: "https://discord.gg/wM4CKTbFVN",
+        website: "https://sirjain0.github.io"
     }
     
     Plugin.register(id, {
@@ -577,6 +578,10 @@ To do:
                         <a href="${links["discord"]}" class="open-in-browser">
                             <i class="fa-brands fa-discord" style="color:#5865F2"></i>
                             <label>Discord Server</label>
+                        </a>
+                        <a href="${links["website"]}" class="open-in-browser">
+                            <i class="icon material-icons" style="color:#33E38E">language</i>
+                            <label>SirJain's Website</label>
                         </a>
                     </div>
                 </div>
