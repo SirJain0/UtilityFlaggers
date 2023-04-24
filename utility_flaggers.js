@@ -45,12 +45,12 @@
     const author = "SirJain and DerfX"
 
     // Dialog variables
-    let invertedDialog, smallCubeDialog, sixFacedMeshDialog, allMeshDialog, decimalCubeDialog
+    let invertedDialog, smallCubeDialog, sixFacedMeshDialog, allMeshDialog, decimalCubeDialog, invalidRotationDialog
 
     // Action variables
     let boxuvConditions, meshConditions
     let invertedCubeCondition, smallCubeCondition, decimalCubeCondition
-    let sixMeshCondition, allMeshCondition
+    let sixMeshCondition, allMeshCondition, invalidRotationCondition
     let flaggersParent
     
     // Used in about dialog
@@ -67,7 +67,7 @@
         description: "Flashes elements based on template conditions.",
         about: "This plugin allows you to flash elements that meet certain preset conditions on-screen.\n## How to use\nTo use this plugin, simply go to `Tools -> Utility Flaggers`. Pick a preset option, fill out your preferred settings, and press `Flag`!",
         tags: ["Utility", "BoxUV", "Format: Generic Model"],
-        version: "1.0.0",
+        version: "1.1.0",
         min_version: "4.2.0",
         variant: "both",
 
@@ -129,6 +129,13 @@
             click: () => invertedDialog.show()
         })
 
+        invalidRotationCondition = new Action("invalid_rotation_restriction", {
+            name: "Flag Invalid Java Block/Item Rotations",
+            icon: "rotate",
+            condition: () => Format?.id !== "image",
+            click: () => invalidRotationDialog.show()
+        })
+
         // Sub-parent actions
         boxuvConditions = new Action("boxuv_conditions", {
             name: "Invalid BoxUV Cubes",
@@ -152,7 +159,8 @@
             children: [
                 "boxuv_conditions", 
                 "mesh_conditions",
-                "inverted_cube_conditions"
+                "inverted_cube_conditions",
+                "invalid_rotation_restriction"
             ]
         })
     }
@@ -351,6 +359,81 @@
             }
         })
 
+        invalidRotationDialog = new Dialog("invalid_rotation_dialog", {
+            title: "Flag Invalid Java Block/Item Rotations",
+            buttons: ["Flag", "Cancel"],
+
+            form: {
+                color: {
+                    type: "color",
+                    label: "Increment Color",
+                    value: "#2ABEDC",
+                    description: "The color of the increment flash. It is recommended to use brighter colors to see the flashing better."
+                },
+                divider: "_",
+                amount: {
+                    type: "number",
+                    min: "1",
+                    value: "3",
+                    label: "Amount of Flashes",
+                    description: 'The amount of flashes that happen.'
+                },
+                duration: {
+                    type: "number",
+                    min: "0.1",
+                    value: "1.5",
+                    step: "0.1",
+                    label: "Duration Per Flash",
+                    description: 'The duration per flash, in seconds.'
+                }
+            },
+
+            onConfirm(formData) {
+                // TODO - get the filter working correctly
+                cubes = Cube.all.filter(cube => 
+                    (
+                        (cube.rotation[0] !== 0) ||
+                        (cube.rotation[1] !== 0) ||
+                        (cube.rotation[2] !== 0)
+                    )
+                    // (
+                    //     (cube.rotation[0] !== 22.5) ||
+                    //     (cube.rotation[1] !== 22.5) ||
+                    //     (cube.rotation[2] !== 22.5)
+                    // ) ||
+                    // (
+                    //     (cube.rotation[0] !== 45) ||
+                    //     (cube.rotation[1] !== 45) ||
+                    //     (cube.rotation[2] !== 45)
+                    // ) ||
+                    // (
+                    //     (cube.rotation[0] !== -22.5) ||
+                    //     (cube.rotation[1] !== -22.5) ||
+                    //     (cube.rotation[2] !== -22.5)
+                    // ) ||
+                    // (
+                    //     (cube.rotation[0] !== -45) ||
+                    //     (cube.rotation[1] !== -45) ||
+                    //     (cube.rotation[2] !== -45)
+                    // )
+                )
+
+                console.log(cubes)
+
+                hexString = formData.color.toHexString()
+                parsedStr = parseInt(hexString.substring(1), 16)
+                material = new THREE.MeshBasicMaterial({color: parsedStr})
+
+                numInput = formData.amount
+                duration = 2 * numInput - 1
+
+                durationInput = formData.duration
+                durationPerFlash = durationInput * 1000
+
+                highlighter.start(cubes, material, duration, durationPerFlash)
+            }
+        })
+
         invertedDialog = new Dialog("inverted_cube_dialog", {
             title: "Flag Inverted Cubes",
             buttons: ["Flag", "Cancel"],
@@ -400,6 +483,10 @@
                 highlighter.start(cubes, material, duration, durationPerFlash)
             }
         })
+    }
+
+    function isInvalidRotationIncrement(cube) {
+        // return ()
     }
 
     // Add the about dialog
@@ -460,16 +547,17 @@
                         margin: 24px;
                     }
                 </style>
+
                 ${banner ? `<div id="banner">This window can be reopened at any time from <strong>Help > About Plugins > ${name}</strong></div>` : ""}
                 <div id="content">
                     <h1 style="margin-top:-10px">${name}</h1>
                     <p>Flashes elements based on template conditions.</p>
-		    <h4>Worth noting:</h4>
-		    <p>- This plugin basically combines the original <b>BoxUV Cube Flagger</b> and <b>Mesh Flagger</b> plugins into one, with adding the functionality of flagging inverted (negative-sized) cubes as well.
+                    <h4>Worth noting:</h4>
+                    <p>- This plugin basically combines the original <b>BoxUV Cube Flagger</b> and <b>Mesh Flagger</b> plugins into one, with adding the functionality of flagging inverted (negative-sized) cubes as well.
                     <p>- DerfX is mentioned as an author due to his original contributions to the Mesh Flagger plugin.</p>
-		    <h4>How to use:</h4>
-		    <p>To use this plugin, go to <b>Tools > Utility Flaggers</b>. Choose your template for flagging (hover over question mark to learn more about it). Configure your settings if you wish, and then press <b>Flag</b>!</p>
-		    <br>
+                    <h4>How to use:</h4>
+                    <p>To use this plugin, go to <b>Tools > Utility Flaggers</b>. Choose your template for flagging (hover over question mark to learn more about it). Configure your settings if you wish, and then press <b>Flag</b>!</p>
+                    <br>
                     <div class="socials">
                         <a href="${links["twitter"]}" class="open-in-browser">
                             <i class="fa-brands fa-twitter" style="color:#1DA1F2"></i>
