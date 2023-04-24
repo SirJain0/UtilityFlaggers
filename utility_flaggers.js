@@ -1,3 +1,10 @@
+/*
+To do:
+- Add inflation flagging?
+- Fix broken filter for rotations
+- Add website to about dialog
+*/
+
 (async function() {
     let aboutAction, cubes, material, duration, durationInput, hexString, numInput
 
@@ -360,7 +367,7 @@
         })
 
         invalidRotationDialog = new Dialog("invalid_rotation_dialog", {
-
+            title: "Flag Invalid Java Block/Item Rotations",
             buttons: ["Flag", "Cancel"],
 
             form: {
