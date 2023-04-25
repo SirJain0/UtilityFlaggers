@@ -136,7 +136,7 @@
 
         inflateCondition = new Action("inflate_condition", {
             name: "Flag Inflated Cubes",
-            icon: "rotate_90_degrees_ccw",
+            icon: "linear_scale",
             condition: () => Format?.id !== "image",
             click: () => inflateDialog.show()
         })
