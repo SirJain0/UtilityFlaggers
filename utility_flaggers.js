@@ -396,7 +396,8 @@ To do:
 
             onConfirm(formData) {
                 cubes = Cube.all.filter(cube => 
-                    isInvalidRotationIncrement(cube) 
+                    isInvalidRotationIncrement(cube) ||
+                    isMultipleAxisRotations(cube)
                 )
 
                 console.log(cubes)
@@ -488,6 +489,21 @@ To do:
             (cube.rotation[2] !== -22.5) &&
             (cube.rotation[2] !== -45) 
         ) 
+    }
+
+    function isMultipleAxisRotations(cube) {
+        return (
+            cube.rotation[0] !== 0 &&
+            cube.rotation[1] !== 0
+        ) ||
+        (
+            cube.rotation[1] !== 0 &&
+            cube.rotation[2] !== 0
+        ) ||
+        (
+            cube.rotation[0] !== 0 &&
+            cube.rotation[2] !== 0
+        )
     }
 
     // Add the about dialog
