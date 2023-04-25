@@ -160,7 +160,7 @@
         flaggersParent = new Action("flaggers_action", {
             name: "Utility Flaggers",
             icon: icon,
-            condition: () => Format?.id !== "image",
+            condition: () => Format?.id !== "image" && Format.id,
             children: [
                 "boxuv_conditions", 
                 "mesh_conditions",
