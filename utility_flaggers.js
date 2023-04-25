@@ -1,8 +1,3 @@
-/*
-To do:
-- Add inflation flagging?
-*/
-
 (async function() {
     let aboutAction, cubes, material, duration, durationInput, hexString, numInput, invalidElementCount
 
@@ -50,13 +45,10 @@ To do:
     const author = "SirJain and DerfX"
 
     // Dialog variables
-    let invertedDialog, smallCubeDialog, sixFacedMeshDialog, allMeshDialog, decimalCubeDialog, invalidRotationDialog
+    let invertedDialog, smallCubeDialog, sixFacedMeshDialog, allMeshDialog, decimalCubeDialog, invalidRotationDialog, inflateDialog
 
     // Action variables
-    let boxuvConditions, meshConditions
-    let invertedCubeCondition, smallCubeCondition, decimalCubeCondition
-    let sixMeshCondition, allMeshCondition, invalidRotationCondition
-    let flaggersParent
+    let boxuvConditions, meshConditions, invertedCubeCondition, smallCubeCondition, decimalCubeCondition, sixMeshCondition, allMeshCondition, invalidRotationCondition, flaggersParent, inflateCondition
     
     // Used in about dialog
     const links = {
@@ -142,6 +134,13 @@ To do:
             click: () => invalidRotationDialog.show()
         })
 
+        inflateCondition = new Action("inflate_condition", {
+            name: "Flag Inflated Cubes",
+            icon: "rotate_90_degrees_ccw",
+            condition: () => Format?.id !== "image",
+            click: () => inflateDialog.show()
+        })
+
         // Sub-parent actions
         boxuvConditions = new Action("boxuv_conditions", {
             name: "Invalid BoxUV Cubes",
@@ -166,7 +165,8 @@ To do:
                 "boxuv_conditions", 
                 "mesh_conditions",
                 "inverted_cube_conditions",
-                "invalid_rotation_restriction"
+                "invalid_rotation_restriction",
+                "inflate_condition"
             ]
         })
     }
@@ -247,6 +247,46 @@ To do:
                     cube.size(0) % 1 !== 0 || 
                     cube.size(1) % 1 !== 0 || 
                     cube.size(2) % 1 !== 0
+                ))
+
+                flagElements(cubes, formData.color, formData.amount, formData.duration)
+            }
+        })
+
+        inflateDialog = new Dialog("inflate_dialog", {
+            title: "Flag Inflated Cubes",
+            buttons: ["Flag", "Cancel"],
+
+            form: {
+                color: {
+                    type: "color",
+                    label: "Color",
+                    value: "#2ABEDC",
+                    description: "The color of the flash. It is recommended to use brighter colors to see the flashing better."
+                },
+                divider: "_",
+                amount: {
+                    type: "number",
+                    min: "1",
+                    value: "3",
+                    label: "Amount of Flashes",
+                    description: 'The amount of flashes that happen.'
+                },
+                duration: {
+                    type: "number",
+                    min: "0.1",
+                    value: "1.5",
+                    step: "0.1",
+                    label: "Duration Per Flash",
+                    description: 'The duration per flash, in seconds.'
+                }
+            },
+
+            onConfirm(formData) {
+                cubes = Cube.all.filter(cube => (
+                    cube.inflate !== 0 ||
+                    cube.inflate !== 0 ||
+                    cube.inflate !== 0
                 ))
 
                 flagElements(cubes, formData.color, formData.amount, formData.duration)
