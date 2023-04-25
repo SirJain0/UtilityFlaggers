@@ -4,7 +4,7 @@ To do:
 */
 
 (async function() {
-    let aboutAction, cubes, material, duration, durationInput, hexString, numInput
+    let aboutAction, cubes, material, duration, durationInput, hexString, numInput, invalidElementCount
 
     // Highlighter mechanism
     const highlighter = {
@@ -13,7 +13,7 @@ To do:
         start: (cubes, material, duration, durationPerFlash) => {
             if (highlighter.running) return
             highlighter.running = true
-            Blockbench.showQuickMessage("Flagging...", 1500)
+            Blockbench.showQuickMessage("Started flagging process...")
 
             for (const cube of cubes) {
                 cube.mesh.material_non_flash = cube.mesh.material
@@ -465,7 +465,12 @@ To do:
     }
 
     function flagElements(cubeList, flashColor, flashAmount, flashDuration) {
+        invalidElementCount = 0
         cubes = cubeList
+
+        for (const cube of cubes) {
+            invalidElementCount++
+        }
 
         hexString = flashColor.toHexString()
         parsedStr = parseInt(hexString.substring(1), 16)
@@ -477,7 +482,11 @@ To do:
         durationInput = flashDuration
         durationPerFlash = durationInput * 1000
 
-        highlighter.start(cubes, material, duration, durationPerFlash)
+        if (invalidElementCount == 0) {
+            Blockbench.showQuickMessage("No invalid elements to flag!")
+        } else {
+            highlighter.start(cubes, material, duration, durationPerFlash)
+        }
     }
       
     function showAbout(banner) {
