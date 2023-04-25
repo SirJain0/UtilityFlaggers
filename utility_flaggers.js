@@ -209,17 +209,7 @@ To do:
                     (cube.size(2) > 0 && cube.size(2) < 1)
                 )
 
-                hexString = formData.color.toHexString()
-                parsedStr = parseInt(hexString.substring(1), 16)
-                material = new THREE.MeshBasicMaterial({color: parsedStr})
-
-                numInput = formData.amount
-                duration = 2 * numInput - 1
-
-                durationInput = formData.duration
-                durationPerFlash = durationInput * 1000
-
-                highlighter.start(cubes, material, duration, durationPerFlash)
+                flagElements(cubes, formData.color, formData.amount, formData.duration)
             }
         })
 
@@ -259,17 +249,7 @@ To do:
                     cube.size(2) % 1 !== 0
                 ))
 
-                hexString = formData.color.toHexString()
-                parsedStr = parseInt(hexString.substring(1), 16)
-                material = new THREE.MeshBasicMaterial({color: parsedStr})
-
-                numInput = formData.amount
-                duration = 2 * numInput - 1
-
-                durationInput = formData.duration
-                durationPerFlash = durationInput * 1000
-
-                highlighter.start(cubes, material, duration, durationPerFlash)
+                flagElements(cubes, formData.color, formData.amount, formData.duration)
             }
         })
 
@@ -304,18 +284,7 @@ To do:
 
             onConfirm(formData) {
                 cubes = Mesh.all
-
-                hexString = formData.color.toHexString()
-                parsedStr = parseInt(hexString.substring(1), 16)
-                material = new THREE.MeshBasicMaterial({color: parsedStr})
-
-                numInput = formData.amount
-                duration = 2 * numInput - 1
-
-                durationInput = formData.duration
-                durationPerFlash = durationInput * 1000
-
-                highlighter.start(cubes, material, duration, durationPerFlash)
+                flagElements(cubes, formData.color, formData.amount, formData.duration)
             }
         })
 
@@ -350,18 +319,7 @@ To do:
 
             onConfirm(formData) {
                 cubes = Mesh.all.filter(e => Object.entries(e.faces).length === 6)
-
-                hexString = formData.color.toHexString()
-                parsedStr = parseInt(hexString.substring(1), 16)
-                material = new THREE.MeshBasicMaterial({color: parsedStr})
-
-                numInput = formData.amount
-                duration = 2 * numInput - 1
-
-                durationInput = formData.duration
-                durationPerFlash = durationInput * 1000
-
-                highlighter.start(cubes, material, duration, durationPerFlash)
+                flagElements(cubes, formData.color, formData.amount, formData.duration)
             }
         })
 
@@ -400,19 +358,7 @@ To do:
                     isMultipleAxisRotations(cube)
                 )
 
-                console.log(cubes)
-
-                hexString = formData.color.toHexString()
-                parsedStr = parseInt(hexString.substring(1), 16)
-                material = new THREE.MeshBasicMaterial({color: parsedStr})
-
-                numInput = formData.amount
-                duration = 2 * numInput - 1
-
-                durationInput = formData.duration
-                durationPerFlash = durationInput * 1000
-
-                highlighter.start(cubes, material, duration, durationPerFlash)
+                flagElements(cubes, formData.color, formData.amount, formData.duration)
             }
         })
 
@@ -452,17 +398,7 @@ To do:
                     (cube.size(2) < 0)
                 )
 
-                hexString = formData.color.toHexString()
-                parsedStr = parseInt(hexString.substring(1), 16)
-                material = new THREE.MeshBasicMaterial({color: parsedStr})
-
-                numInput = formData.amount
-                duration = 2 * numInput - 1
-
-                durationInput = formData.duration
-                durationPerFlash = durationInput * 1000
-
-                highlighter.start(cubes, material, duration, durationPerFlash)
+                flagElements(cubes, formData.color, formData.amount, formData.duration)
             }
         })
     }
@@ -526,6 +462,22 @@ To do:
         })
 
         about.children.push(aboutAction)
+    }
+
+    function flagElements(cubeList, flashColor, flashAmount, flashDuration) {
+        cubes = cubeList
+
+        hexString = flashColor.toHexString()
+        parsedStr = parseInt(hexString.substring(1), 16)
+        material = new THREE.MeshBasicMaterial({color: parsedStr})
+
+        numInput = flashAmount
+        duration = 2 * numInput - 1
+
+        durationInput = flashDuration
+        durationPerFlash = durationInput * 1000
+
+        highlighter.start(cubes, material, duration, durationPerFlash)
     }
       
     function showAbout(banner) {
