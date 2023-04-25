@@ -195,7 +195,7 @@
                 duration: {
                     type: "number",
                     min: "0.1",
-                    value: "1.5",
+                    value: "1",
                     step: "0.1",
                     label: "Duration Per Flash",
                     description: 'The duration per flash, in seconds.'
@@ -235,7 +235,7 @@
                 duration: {
                     type: "number",
                     min: "0.1",
-                    value: "1.5",
+                    value: "1",
                     step: "0.1",
                     label: "Duration Per Flash",
                     description: 'The duration per flash, in seconds.'
@@ -275,7 +275,7 @@
                 duration: {
                     type: "number",
                     min: "0.1",
-                    value: "1.5",
+                    value: "1",
                     step: "0.1",
                     label: "Duration Per Flash",
                     description: 'The duration per flash, in seconds.'
@@ -315,7 +315,7 @@
                 duration: {
                     type: "number",
                     min: "0.1",
-                    value: "1.5",
+                    value: "1",
                     step: "0.1",
                     label: "Duration Per Flash",
                     description: 'The duration per flash, in seconds.'
@@ -350,7 +350,7 @@
                 duration: {
                     type: "number",
                     min: "0.1",
-                    value: "1.5",
+                    value: "1",
                     step: "0.1",
                     label: "Duration Per Flash",
                     description: 'The duration per flash, in seconds.'
@@ -385,7 +385,7 @@
                 duration: {
                     type: "number",
                     min: "0.1",
-                    value: "1.5",
+                    value: "1",
                     step: "0.1",
                     label: "Duration Per Flash",
                     description: 'The duration per flash, in seconds.'
@@ -424,7 +424,7 @@
                 duration: {
                     type: "number",
                     min: "0.1",
-                    value: "1.5",
+                    value: "1",
                     step: "0.1",
                     label: "Duration Per Flash",
                     description: 'The duration per flash, in seconds.'
