@@ -1,8 +1,6 @@
 /*
 To do:
 - Add inflation flagging?
-- Fix broken filter for rotations
-
 */
 
 (async function() {
@@ -397,33 +395,8 @@ To do:
             },
 
             onConfirm(formData) {
-                // TODO - get the filter working correctly
                 cubes = Cube.all.filter(cube => 
-                    (
-                        (cube.rotation[0] !== 0) ||
-                        (cube.rotation[1] !== 0) ||
-                        (cube.rotation[2] !== 0)
-                    )
-                    // (
-                    //     (cube.rotation[0] !== 22.5) ||
-                    //     (cube.rotation[1] !== 22.5) ||
-                    //     (cube.rotation[2] !== 22.5)
-                    // ) ||
-                    // (
-                    //     (cube.rotation[0] !== 45) ||
-                    //     (cube.rotation[1] !== 45) ||
-                    //     (cube.rotation[2] !== 45)
-                    // ) ||
-                    // (
-                    //     (cube.rotation[0] !== -22.5) ||
-                    //     (cube.rotation[1] !== -22.5) ||
-                    //     (cube.rotation[2] !== -22.5)
-                    // ) ||
-                    // (
-                    //     (cube.rotation[0] !== -45) ||
-                    //     (cube.rotation[1] !== -45) ||
-                    //     (cube.rotation[2] !== -45)
-                    // )
+                    isInvalidRotationIncrement(cube) 
                 )
 
                 console.log(cubes)
@@ -494,7 +467,27 @@ To do:
     }
 
     function isInvalidRotationIncrement(cube) {
-        // return ()
+        return (
+            (cube.rotation[0] !== 0) &&
+            (cube.rotation[0] !== 22.5) &&
+            (cube.rotation[0] !== 45) &&
+            (cube.rotation[0] !== -22.5) &&
+            (cube.rotation[0] !== -45) 
+        ) ||
+        (
+            (cube.rotation[1] !== 0) &&
+            (cube.rotation[1] !== 22.5) &&
+            (cube.rotation[1] !== 45) &&
+            (cube.rotation[1] !== -22.5) &&
+            (cube.rotation[1] !== -45) 
+        ) ||
+        (
+            (cube.rotation[2] !== 0) &&
+            (cube.rotation[2] !== 22.5) &&
+            (cube.rotation[2] !== 45) &&
+            (cube.rotation[2] !== -22.5) &&
+            (cube.rotation[2] !== -45) 
+        ) 
     }
 
     // Add the about dialog
